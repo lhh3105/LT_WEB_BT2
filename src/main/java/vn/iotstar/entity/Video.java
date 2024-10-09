@@ -19,15 +19,15 @@ public class Video implements Serializable {
 	@Id
 
 	@Column(name = "VideoId")
-
 	private String videoId;
+	
+	@Column(name = "Images")
+	private String images;
 
 	@Column(name = "Active")
-
 	private int active;
 
 	@Column(name = "Description")
-
 	private String description;
 
 	@Column(name = "Poster")
@@ -41,17 +41,22 @@ public class Video implements Serializable {
 	@Column(name = "Views")
 
 	private int views;
+	
+	
 
 	// bi-directional many-to-one association to Favorite
 
 	
 	// bi-directional many-to-one association to Category
 
+	
+
 	@ManyToOne
 
-	@JoinColumn(name = "categoryid")
+	@JoinColumn(name = "categoryId")
 
 	private Category category;
+	
 
 	public Video() {
 
@@ -79,6 +84,14 @@ public class Video implements Serializable {
 
 		this.active = active;
 
+	}
+	
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
 	}
 
 	public String getDescription() {
