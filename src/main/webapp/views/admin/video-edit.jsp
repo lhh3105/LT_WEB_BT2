@@ -8,27 +8,35 @@
 <title>Edit</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/admin/category/update" method="post" enctype = "multipart/form-data">
-		<label for="categoryname">Category ID</label><br>
-  		<input type="text" id="categoryid" name="categoryid" value = "${cate.categoryId }" ><br>
-  		<label for="categoryname">Category name</label><br>
-  		<input type="text" id="categoryname" name="categoryname" value = "${cate.categoryname }" ><br>
+	<form action="${pageContext.request.contextPath }/admin/video/update" method="post" enctype = "multipart/form-data">
+		<label for="videoid">Video ID</label><br>
+  		<input type="text" id="videoid" name="videoid" value = "${video.videoId }" ><br>
+  		<label for="title">Video title</label><br>
+  		<input type="text" id="videoname" name="videoname" value = "${video.title}" ><br>
   		<label for="images">Images</label><br>
   		
   		
-  		<c:if test="${cate.images.substring(0,5) != 'https'}">
-			<c:url value = "/image?fname=${cate.images }" var="imgUrl" ></c:url>
+  		<c:if test="${video.images.substring(0,5) != 'https'}">
+			<c:url value = "/image?fname=${video.images }" var="imgUrl" ></c:url>
 		</c:if>
 			
-		<c:if test="${cate.images.substring(0,5) == 'https'}">
-			<c:url value = "${cate.images }" var="imgUrl" ></c:url>
+		<c:if test="${video.images.substring(0,5) == 'https'}">
+			<c:url value = "${video.images }" var="imgUrl" ></c:url>
 		</c:if>
 			
 		<img id = "imagess" height="150" width="200" src="${imgUrl}" /><br>
 		<input type="file"  onchange="chooseFile(this)" id="images" name="images"><br><br>
   		
   		<label for="lname">Status</label><br>
-  		<input type="text" id="status" name="status" value = "${cate.status }"><br><br>
+  		<input type="text" id="status" name="status" value = "${video.active }"><br><br>
+  		
+  		<select id="mycate" name="mycate" required>
+            <c:forEach var="category" items="${listcate}">
+                <option value="${category.categoryId}">${category.categoryname}</option>
+            </c:forEach>
+        </select>
+        <br><br>
+        
   		<input type="submit" value="Update">
 	</form> 
 	

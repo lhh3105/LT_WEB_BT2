@@ -60,6 +60,10 @@ public class VideoController extends HttpServlet {
 			String id = req.getParameter("id");
 
 			Video video = videoService.findById(id);
+			
+			List<Category> listcate = cateService.findAll();
+			req.setAttribute("listcate", listcate);
+			
 
 			req.setAttribute("video", video);
 
@@ -87,7 +91,7 @@ public class VideoController extends HttpServlet {
 
 			}
 
-			resp.sendRedirect(req.getContextPath() + "/admin/video");
+			resp.sendRedirect(req.getContextPath() + "/admin/videos");
 
 		}
 
@@ -110,6 +114,11 @@ public class VideoController extends HttpServlet {
 			String videoname = req.getParameter("videoname");
 
 			int status = Integer.parseInt(req.getParameter("status"));
+			
+			
+			int cateid = Integer.parseInt(req.getParameter("mycate"));
+			Category cate = cateService.findById(cateid);
+			
 
 			Video video = new Video();
 
@@ -118,6 +127,8 @@ public class VideoController extends HttpServlet {
 			video.setTitle(videoname);
 			
 			video.setActive(status);
+			
+			video.setCategory(cate);
 
 			// lưu hình cũ
 

@@ -9,9 +9,9 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/admin/category/update" method="post" enctype = "multipart/form-data">
-		<label for="categoryname">Category ID</label><br>
+		<label for="categoryid">Video ID</label><br>
   		<input type="text" id="categoryid" name="categoryid" value = "${cate.categoryId }" ><br>
-  		<label for="categoryname">Category name</label><br>
+  		<label for="videoname">Video Name</label><br>
   		<input type="text" id="categoryname" name="categoryname" value = "${cate.categoryname }" ><br>
   		<label for="images">Images</label><br>
   		
